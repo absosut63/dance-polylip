@@ -39,33 +39,33 @@
             --telegram: #29b6f6;
             --telegram-hover: #4fc3f7;
         }
+ <!-- Шапка -->
+    <header id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">ТАНЦУЛЬКИ<span>.</span></a>
+
+            <nav>
+                <ul>
+                    <li><a href="#styles">Направления</a></li>
+                    <li><a href="#teacher">Педагог</a></li>
+                    <li><a href="#schedule">Расписание</a></li>
+                    <li><a href="#price">Цена</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-buttons">
+                <a href="tel:89171653455" class="btn btn-primary">📞 Позвонить</a>
+                <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" class="btn btn-telegram">✈ Telegram</a>
+            </div>
+
+            <button class="burger" id="burgerBtn" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* Шапка */
-        header {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 20px 0;
-            transition: background-color 0.3s ease, padding 0.3s ease;
-            background-color: rgba(11, 11, 11, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        header.scrolled {
-            padding: 12px 0;
-            background-color: rgba(11, 11, 11, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
 
         .logo {
             font-family: 'Montserrat', sans-serif;
