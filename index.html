@@ -36,6 +36,8 @@
             --card-bg: #161616;
             --text-light: #f5f5f5;
             --text-muted: #b0b0b0;
+            --telegram: #29b6f6;
+            --telegram-hover: #4fc3f7;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -62,6 +64,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
         }
 
         .logo {
@@ -69,6 +72,7 @@
             font-size: 28px;
             font-weight: 800;
             color: var(--text-light);
+            white-space: nowrap;
         }
 
         .logo span { color: var(--primary); }
@@ -113,6 +117,7 @@
             cursor: pointer;
             border: none;
             font-family: 'Montserrat', sans-serif;
+            text-align: center;
         }
 
         .btn-primary {
@@ -137,6 +142,29 @@
             background: var(--primary);
             color: white;
             transform: translateY(-3px);
+        }
+
+        .btn-telegram {
+            background: transparent;
+            border: 2px solid var(--telegram);
+            color: var(--telegram);
+        }
+
+        .btn-telegram:hover {
+            background: var(--telegram);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .header-buttons .btn {
+            padding: 10px 18px;
+            font-size: 13px;
         }
 
         .burger {
@@ -354,7 +382,7 @@
         .teacher-img {
             height: 420px;
             background-size: cover;
-            background-position: center;
+            background-position: center 20%;
             position: relative;
         }
 
@@ -486,6 +514,22 @@
 
         .phone-link:hover { color: var(--primary-dark); }
 
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--telegram);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s;
+        }
+
+        .telegram-link:hover { color: var(--telegram-hover); }
+
         /* Футер */
         footer {
             background: #050505;
@@ -538,6 +582,16 @@
             transform: translateY(-3px);
         }
 
+        .social-links a.telegram-icon {
+            background: var(--telegram);
+            color: white;
+        }
+
+        .social-links a.telegram-icon:hover {
+            background: var(--telegram-hover);
+            transform: translateY(-3px);
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
@@ -547,6 +601,21 @@
         }
 
         .footer-bottom strong { color: var(--primary); }
+
+        .footer-bottom a.phone-bottom { color: var(--primary); }
+        .footer-bottom a.phone-bottom:hover { color: var(--primary-dark); }
+        .footer-bottom a.telegram-bottom { color: var(--telegram); }
+        .footer-bottom a.telegram-bottom:hover { color: var(--telegram-hover); }
+
+        /* Telegram-ссылки везде */
+        a[href*="t.me"] {
+            color: var(--telegram);
+            transition: color 0.3s, opacity 0.3s;
+        }
+        a[href*="t.me"]:hover {
+            color: var(--telegram-hover);
+            opacity: 0.85;
+        }
 
         /* Мобильное меню */
         .mobile-menu {
@@ -592,13 +661,15 @@
             .hero h1 { font-size: 56px; }
             .section-title h2 { font-size: 38px; }
             .schedule-info .time-big { font-size: 56px; }
-            .phone-link { font-size: 24px; }
+            .phone-link, .telegram-link { font-size: 24px; }
+            nav ul { gap: 20px; }
+            nav a { font-size: 14px; }
         }
 
         @media (max-width: 768px) {
             nav ul { display: none; }
             .burger { display: flex; }
-            .header-inner .btn { display: none; }
+            .header-buttons { display: none; }
             .hero h1 { font-size: 42px; }
             .hero p { font-size: 18px; }
             .section-title h2 { font-size: 32px; }
@@ -606,7 +677,7 @@
             .cta h2 { font-size: 32px; }
             .schedule-info { padding: 40px 25px; }
             .schedule-info .time-big { font-size: 42px; }
-            .phone-link { font-size: 20px; }
+            .phone-link, .telegram-link { font-size: 20px; }
             .teacher-img { height: 350px; }
         }
 
@@ -615,6 +686,7 @@
             .hero-buttons { flex-direction: column; align-items: center; }
             .btn { width: 100%; text-align: center; }
             .schedule-info .time-big { font-size: 32px; }
+            .phone-link, .telegram-link { font-size: 18px; }
         }
     </style>
 </head>
@@ -632,10 +704,10 @@
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
             </nav>
-            <div style="display:flex; gap:10px; align-items:center;">
-    <a href="tel:89171653455" class="btn btn-primary" style="padding:10px 20px; font-size:13px;">📞 Позвонить</a>
-    <a href="https://t.me/no_tyanochka" target="_blank" class="btn btn-outline" style="padding:10px 20px; font-size:13px;">✈ Telegram</a>
-</div>
+            <div class="header-buttons">
+                <a href="tel:89171653455" class="btn btn-primary">📞 Позвонить</a>
+                <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" class="btn btn-telegram">✈ Telegram</a>
+            </div>
             <button class="burger" id="burgerBtn" aria-label="Меню">
                 <span></span><span></span><span></span>
             </button>
@@ -650,7 +722,8 @@
             <li><a href="#teacher">Педагог</a></li>
             <li><a href="#schedule">Расписание</a></li>
             <li><a href="#contacts">Контакты</a></li>
-            <li><a href="tel:89171653455" style="color: var(--primary);">Позвонить</a></li>
+            <li><a href="tel:89171653455" style="color: var(--primary);">📞 Позвонить</a></li>
+            <li><a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" style="color: var(--telegram);">✈ Telegram</a></li>
         </ul>
     </div>
 
@@ -727,7 +800,7 @@
             </div>
             <div class="teacher-single">
                 <div class="teacher-card fade-in">
-                    <div class="teacher-img" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="teacher-img" style="background-image: url('polina.jpg');"></div>
                     <div class="teacher-info">
                         <h3>Полина Дегелева</h3>
                         <div class="role">Педагог школы «Танцульки»</div>
@@ -748,7 +821,7 @@
             <div class="schedule-info fade-in">
                 <div class="days">Каждый день</div>
                 <div class="time-big">17:00 – 19:00</div>
-                <p class="schedule-text">Занятия проходят ежедневно. Длительность — 2 часа. Запись по телефону обязательна.</p>
+                <p class="schedule-text">Занятия проходят ежедневно. Длительность — 2 часа. Запись по телефону или в Telegram обязательна.</p>
             </div>
         </div>
     </section>
@@ -758,12 +831,21 @@
         <div class="container">
             <div class="cta fade-in">
                 <h2>Запишись на занятие</h2>
-                <p>Позвони — и мы подберём удобный день и направление.</p>
-                <a href="tel:89171653455" class="phone-link">
-                    <i class="fas fa-phone-alt"></i> 8 917 165-34-55
-                </a>
-                <br>
-                <a href="tel:89171653455" class="btn btn-primary">Позвонить сейчас</a>
+                <p>Позвони или напиши в Telegram — подберём удобный день и направление.</p>
+
+                <div style="display:flex; flex-direction:column; gap:15px; align-items:center; position:relative; z-index:2;">
+                    <a href="tel:89171653455" class="phone-link" style="margin-bottom:0;">
+                        <i class="fas fa-phone-alt"></i> 8 917 165-34-55
+                    </a>
+                    <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" class="telegram-link" style="margin-bottom:0;">
+                        <i class="fab fa-telegram-plane"></i> @no_tyanochka
+                    </a>
+                </div>
+
+                <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-top:30px; position:relative; z-index:2;">
+                    <a href="tel:89171653455" class="btn btn-primary">📞 Позвонить</a>
+                    <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" class="btn btn-telegram">✈ Написать в Telegram</a>
+                </div>
             </div>
         </div>
     </section>
@@ -776,9 +858,8 @@
                     <h3>Танцульки</h3>
                     <p>Школа танцев для детей и взрослых. Народный, современный, хип-хоп, брейк-данс.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
-                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" aria-label="Telegram" class="telegram-icon"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="tel:89171653455" aria-label="Позвонить"><i class="fas fa-phone-alt"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -803,11 +884,16 @@
                     <p><i class="fas fa-phone-alt" style="color: var(--primary); margin-right: 8px;"></i>
                         <a href="tel:89171653455">8 917 165-34-55</a>
                     </p>
+                    <p><i class="fab fa-telegram-plane" style="color: var(--telegram); margin-right: 8px;"></i>
+                        <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener">@no_tyanochka</a>
+                    </p>
                     <p><i class="fas fa-clock" style="color: var(--primary); margin-right: 8px;"></i> Ежедневно 17:00–19:00</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                © 2025 Школа танцев <strong>«Танцульки»</strong>. Педагог — Полина Дегелева. Тел: 8 917 165-34-55
+                © 2025 Школа танцев <strong>«Танцульки»</strong>. Педагог — Полина Дегелева.<br>
+                Тел: <a href="tel:89171653455" class="phone-bottom">8 917 165-34-55</a> ·
+                Telegram: <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" class="telegram-bottom">@no_tyanochka</a>
             </div>
         </div>
     </footer>
