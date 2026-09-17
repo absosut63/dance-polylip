@@ -455,7 +455,124 @@
             max-width: 600px;
             margin: 0 auto;
         }
+    /* Стоимость */
+        .price-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 60px 40px;
+            max-width: 520px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(255, 51, 102, 0.15);
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
 
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255, 51, 102, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-value {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-number {
+            font-size: 84px;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(45deg, #ff3366, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-currency {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .price-period {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin: 0 auto 35px;
+            max-width: 360px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-features li {
+            padding: 12px 0;
+            color: var(--text-light);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-features i {
+            color: var(--primary);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .price-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-buttons .btn {
+            flex: 1;
+            min-width: 160px;
+        }
         /* CTA */
         .cta {
             background: linear-gradient(135deg, #1a1a1a 0%, #0b0b0b 100%);
@@ -696,14 +813,13 @@
     <header id="header">
         <div class="container header-inner">
             <a href="#" class="logo">ТАНЦУЛЬКИ<span>.</span></a>
-            <nav>
-                <ul>
+            <nav><ul>
                     <li><a href="#styles">Направления</a></li>
                     <li><a href="#teacher">Педагог</a></li>
                     <li><a href="#schedule">Расписание</a></li>
+                    <li><a href="#price">Цена</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
-            </nav>
             <div class="header-buttons">
                 <a href="tel:89171653455" class="btn btn-primary">📞 Позвонить</a>
                 <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" class="btn btn-telegram">✈ Telegram</a>
@@ -721,6 +837,7 @@
             <li><a href="#styles">Направления</a></li>
             <li><a href="#teacher">Педагог</a></li>
             <li><a href="#schedule">Расписание</a></li>
+            <li><a href="#price">Цена</a></li>
             <li><a href="#contacts">Контакты</a></li>
             <li><a href="tel:89171653455" style="color: var(--primary);">📞 Позвонить</a></li>
             <li><a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" style="color: var(--telegram);">✈ Telegram</a></li>
@@ -825,6 +942,34 @@
             </div>
         </div>
     </section>
+    <!-- Стоимость -->
+    <section id="price" style="background: #0e0e0e;">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Стоимость</h2>
+                <p>Прозрачные цены, без скрытых платежей.</p>
+            </div>
+            <div class="price-card fade-in">
+                <div class="price-badge">Абонемент</div>
+                <div class="price-value">
+                    <span class="price-number">10 000</span>
+                    <span class="price-currency">₽</span>
+                </div>
+                <div class="price-period">в месяц</div>
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> Занятия каждый день</li>
+                    <li><i class="fas fa-check"></i> С 17:00 до 19:00</li>
+                    <li><i class="fas fa-check"></i> Все направления включены</li>
+                    <li><i class="fas fa-check"></i> Народный, современный, хип-хоп, брейк-данс</li>
+                    <li><i class="fas fa-check"></i> Педагог — Полина Дегелева</li>
+                </ul>
+                <div class="price-buttons">
+                    <a href="tel:89171653455" class="btn btn-primary">📞 Записаться</a>
+                    <a href="https://t.me/no_tyanochka" target="_blank" rel="noopener" class="btn btn-telegram">✈ Telegram</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- CTA -->
     <section id="cta">
@@ -872,12 +1017,12 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Расписание</h3>
-                    <ul>
-                        <li>Каждый день</li>
-                        <li>17:00 – 19:00</li>
-                        <li>Педагог: Полина Дегелева</li>
-                    </ul>
+                    <h3>Расписание</h3> <ul>
+                    <li>Каждый день</li>
+                    <li>17:00 – 19:00</li>
+                    <li>10 000 ₽ / месяц</li>
+                    <li>Педагог: Полина Дегелева</li>
+                </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Контакты</h3>
